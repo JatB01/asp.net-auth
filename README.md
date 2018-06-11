@@ -1,1 +1,4 @@
-# aspnet-fitness-frog-auth
+
+# User Authentication with ASP.NET Identity
+
+## Fitness Frog
