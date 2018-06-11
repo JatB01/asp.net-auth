@@ -29,12 +29,14 @@ namespace Treehouse.FitnessFrog.Controllers
             _authenticationManager = authenticationManager;
         }
 
+        [AllowAnonymous]
         public ActionResult SignIn()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> SignIn(AccountSignInViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -70,12 +72,14 @@ namespace Treehouse.FitnessFrog.Controllers
             return RedirectToAction("Index", "Entries");
         }
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> Register(AccountRegisterViewModel viewModel)
         {
             // If the ModelState is valid...
