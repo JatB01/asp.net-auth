@@ -4,6 +4,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+    @Html.HiddenFor(m => m.Entry.UserId)
 
     <div class="row">
 
@@ -16,8 +17,8 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Entry.ActivityId, new { @class = "control-label" })
-                @Html.DropDownListFor(m => m.Entry.ActivityId, 
-                    Model.ActivitiesSelectListItems, "", new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.Entry.ActivityId,
+                         Model.ActivitiesSelectListItems, "", new { @class = "form-control" })
             </div>
 
             <div class="form-group">
