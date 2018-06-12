@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,7 +24,9 @@ namespace Treehouse.FitnessFrog.Controllers
 
         public ActionResult Index()
         {
-            IList<Entry> entries = _entriesRepository.GetList();
+            var userId = User.Identity.GetUserId();
+
+            IList<Entry> entries = _entriesRepository.GetList(userId);
 
             // Calculate the total activity.
             decimal totalActivity = entries

@@ -22,7 +22,7 @@ namespace Treehouse.FitnessFrog.Shared.Data
         /// <param name="id">The ID for the entry to return.</param>
         /// <param name="includeRelatedEntities">Indicates whether or not to include related entities.</param>
         /// <returns>An entry.</returns>
-        public override Entry Get(int id, bool includeRelatedEntities = true)
+        public Entry Get(int id, bool includeRelatedEntities = true)
         {
             var entries = Context.Entries.AsQueryable();
 
@@ -40,11 +40,13 @@ namespace Treehouse.FitnessFrog.Shared.Data
         /// <summary>
         /// Returns a collection of entries.
         /// </summary>
+        /// <param name="userId">The user ID to retrieve entries for.</param>
         /// <returns>A list of entries.</returns>
-        public override IList<Entry> GetList()
+        public IList<Entry> GetList(string userId)
         {
             return Context.Entries
                 .Include(e => e.Activity)
+                .Where(e => e.UserId == userId)
                 .OrderByDescending(e => e.Date)
                 .ThenByDescending(e => e.Id)
                 .ToList();
