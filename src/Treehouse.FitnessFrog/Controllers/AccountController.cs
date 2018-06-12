@@ -37,6 +37,7 @@ namespace Treehouse.FitnessFrog.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SignIn(AccountSignInViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -65,6 +66,7 @@ namespace Treehouse.FitnessFrog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignOut()
         {
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
@@ -80,6 +82,7 @@ namespace Treehouse.FitnessFrog.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(AccountRegisterViewModel viewModel)
         {
             // If the ModelState is valid...
